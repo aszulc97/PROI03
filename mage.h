@@ -5,5 +5,5 @@
 class mage : public unit
 {
   mage();
-}
+};
 #endif //MAGE_H_

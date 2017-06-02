@@ -11,7 +11,7 @@ class unit
 
     void walk();
     void attack();
-    void gettingDamaged
+    void gettingDamaged();
 };
 #endif //UNIT_H_
 

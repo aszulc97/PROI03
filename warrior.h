@@ -5,5 +5,5 @@
 class warrior: public unit
 {
   warrior();
-}
+};
 #endif //WARRIOR_H_

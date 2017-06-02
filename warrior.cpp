@@ -1,6 +1,6 @@
 #include "warrior.h"
 
-warrior::warior()
+warrior::warrior()
 {
 
 }

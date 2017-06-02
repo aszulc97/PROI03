@@ -5,5 +5,5 @@
 class rider: public unit
 {
   rider();
-}
+};
 #endif //RIDER_H_

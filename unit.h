@@ -8,6 +8,7 @@ class unit
     int damage;
     int attackRange;
     int speed;
+    int cost;
 
     void walk();
     void attack();

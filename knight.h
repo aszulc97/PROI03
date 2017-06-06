@@ -4,6 +4,7 @@
 #include "unit.h"
 class knight: public unit
 {
-  knight();
+public:
+  knight(int n);
 };
 #endif //KNIGHT_H_

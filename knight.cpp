@@ -1,6 +1,10 @@
 #include "knight.h"
 
-knight::knight()
+knight::knight(int n)
 {
-  damage = 13;
+  health=200;
+  damage=20;
+  attackRange=1;
+  speed=n/2;
+  cost=20;
 }

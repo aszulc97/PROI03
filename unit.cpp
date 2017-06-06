@@ -1,10 +1,18 @@
-#include "unit.h";
-void walk()
+#include <ncurses.h>
+#include "unit.h"
+using namespace std;
+
+void unit::walk()
 {
 
 }
 
-void attack()
+void unit::attack()
 {
 
+}
+
+void unit::showDetails()
+{
+  printw("%d\t%d\t%d\t%d\t %d\n", damage, health,cost,speed,attackRange);
 }

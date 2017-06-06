@@ -4,6 +4,7 @@
 #include "unit.h"
 class warrior: public unit
 {
-  warrior();
+public:
+  warrior(int n);
 };
 #endif //WARRIOR_H_

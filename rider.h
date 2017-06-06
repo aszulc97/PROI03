@@ -4,6 +4,7 @@
 #include "unit.h"
 class rider: public unit
 {
-  rider();
+public:
+  rider(int n);
 };
 #endif //RIDER_H_

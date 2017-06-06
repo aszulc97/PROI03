@@ -1,6 +1,10 @@
 #include "mage.h"
 
-mage::mage()
+mage::mage(int n)
 {
-
+  health=180;
+  damage=30;
+  attackRange=15;
+  speed=n/5;
+  cost=30;
 }

@@ -4,6 +4,7 @@
 #include "unit.h"
 class mage : public unit
 {
-  mage();
+public:
+  mage(int n);
 };
 #endif //MAGE_H_

@@ -4,15 +4,18 @@
 class unit
 {
   public:
+    void walk();
+    void attack();
+    void gettingDamaged();
+    void showDetails();
+
+  protected:
     int health;
     int damage;
     int attackRange;
     int speed;
     int cost;
 
-    void walk();
-    void attack();
-    void gettingDamaged();
 };
 #endif //UNIT_H_
 

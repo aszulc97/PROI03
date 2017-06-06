@@ -9,6 +9,5 @@
 #include <iostream>
 class game
 {
-
 }
 #endif //GAME_H_

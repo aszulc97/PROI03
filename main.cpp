@@ -58,41 +58,36 @@ int main()
   warrior1.showDetails();
 
   printw("\nIlu lowcow kupujesz?: ");
-  player1.archers=getch(); //here's a character
-  player1.shopping=player1.getMoney()-(player1.archers-48)*archer1.getCost();
+  player1.archers=getch()-48; //here's a character
+  player1.shopping=player1.getMoney()-(player1.archers)*archer1.getCost();
   printw("\nZostalo Ci %d monet",player1.shopping);
 
   printw("\nIlu jezdzcow kupujesz?: ");
-  player1.riders=getch(); //here's a character
-  player1.shopping-=(player1.riders-48)*rider1.getCost();
+  player1.riders=getch()-48; //here's a character
+  player1.shopping-=(player1.riders)*rider1.getCost();
   printw("\nZostalo Ci %d monet",player1.shopping);
 
   printw("\nIlu magow kupujesz?: ");
-  player1.mages=getch(); //here's a character
-  player1.shopping-=(player1.mages-48)*mage1.getCost();
+  player1.mages=getch()-48; //here's a character
+  player1.shopping-=(player1.mages)*mage1.getCost();
   printw("\nZostalo Ci %d monet",player1.shopping);
 
   printw("\nIlu rycerzy kupujesz?: ");
-  player1.knights=getch(); //here's a character
-  player1.shopping-=(player1.knights-48)*knight1.getCost();
+  player1.knights=getch()-48; //here's a character
+  player1.shopping-=(player1.knights)*knight1.getCost();
   printw("\nZostalo Ci %d monet",player1.shopping);
 
   printw("\nIlu wojownikow kupujesz?: ");
-  player1.warriors=getch(); //here's a character
-  player1.shopping-=(player1.warriors-48)*warrior1.getCost();
+  player1.warriors=getch()-48; //here's a character
+  player1.shopping-=(player1.warriors)*warrior1.getCost();
   printw("\nZostalo Ci %d monet",player1.shopping);
 
-  printw("\nTwoja armia:\n");
-  printw("Lowcy: %d\n", player1.archers-48);
-  printw("Jezdzcy: %d\n", player1.riders-48);
-  printw("Magowie: %d\n", player1.mages-48);
-  printw("Rycerze: %d\n", player1.knights-48);
-  printw("Wojownicy: %d\n", player1.warriors-48);
+  player1.showArmy();
+  getch();
 
   //PLAYER II
 
   clear();
-  getch();
   mvprintw( 1, 0, "Graczu 2, masz %d monet", player2.getMoney() );
   mvprintw( 2, 0, "Jakie jednostki chcesz za to kupic?\n");
   getch();
@@ -110,36 +105,49 @@ int main()
   warrior1.showDetails();
 
   printw("\nIlu lowcow kupujesz?: ");
-  player2.archers=getch(); //here's a character
-  player2.shopping=player2.getMoney()-(player2.archers-48)*archer1.getCost();
+  player2.archers=getch()-48; //here's a character
+  player2.shopping=player2.getMoney()-(player2.archers)*archer1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
   printw("\nIlu jezdzcow kupujesz?: ");
-  player2.riders=getch(); //here's a character
-  player2.shopping-=(player2.riders-48)*rider1.getCost();
+  player2.riders=getch()-48; //here's a character
+  player2.shopping-=(player2.riders)*rider1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
   printw("\nIlu magow kupujesz?: ");
-  player2.mages=getch(); //here's a character
-  player2.shopping-=(player2.mages-48)*mage1.getCost();
+  player2.mages=getch()-48; //here's a character
+  player2.shopping-=(player2.mages)*mage1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
   printw("\nIlu rycerzy kupujesz?: ");
-  player2.knights=getch(); //here's a character
-  player2.shopping-=(player2.knights-48)*knight1.getCost();
+  player2.knights=getch()-48; //here's a character
+  player2.shopping-=(player2.knights)*knight1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
   printw("\nIlu wojownikow kupujesz?: ");
-  player2.warriors=getch(); //here's a character
-  player2.shopping-=(player2.warriors-48)*warrior1.getCost();
+  player2.warriors=getch()-48; //here's a character
+  player2.shopping-=(player2.warriors)*warrior1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
-  printw("\nTwoja armia:\n");
-  printw("Lowcy: %d\n", player2.archers-48);
-  printw("Jezdzcy: %d\n", player2.riders-48);
-  printw("Magowie: %d\n", player2.mages-48);
-  printw("Rycerze: %d\n", player2.knights-48);
-  printw("Wojownicy: %d\n", player2.warriors-48);
+  player2.showArmy();
   getch();
+  clear();
+
+  attron(COLOR_PAIR(1));
+  mvprintw( 1,1, " Gracz 1:" );
+  attron(COLOR_PAIR(2));
+  mvprintw( 2,1, " Lowcy: %d\n  Jezdzcy: %d\n  Magowie: %d\n  Rycerze: %d\n  Wojownicy: %d\n",
+    player1.archers, player1.riders, player1.mages, player1.knights, player1.warriors );
+
+  attron(COLOR_PAIR(1));
+  mvprintw( 1,30, " Gracz 2:" );
+  attron(COLOR_PAIR(2));
+  mvprintw( 2,30, "Lowcy: %d", player2.archers);
+  mvprintw( 3,30, "Jezdzcy: %d", player2.riders);
+  mvprintw( 4,30, "Magowie: %d", player2.mages);
+  mvprintw( 5,30, "Rycerze: %d", player2.knights);
+  mvprintw( 6,30, "Wojownicy: %d", player2.warriors);
+  getch();
+
   endwin();
 }

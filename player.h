@@ -14,6 +14,7 @@ class player
     int riders;
     int warriors;
     int shopping;
+    void showArmy();
 
 
   private:

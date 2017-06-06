@@ -8,6 +8,7 @@ class unit
     void attack();
     void gettingDamaged();
     void showDetails();
+    int getCost();
 
   protected:
     int health;

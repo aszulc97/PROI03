@@ -8,14 +8,16 @@ class player
     player();
     int getMoney();
     void showUnits();
-
-  private:
-    int money;
     int archers;
     int mages;
     int knights;
     int riders;
     int warriors;
+    int shopping;
+
+
+  private:
+    int money;
 
 };
 #endif //PLAYER_H_

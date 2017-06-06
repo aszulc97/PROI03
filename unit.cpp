@@ -16,3 +16,8 @@ void unit::showDetails()
 {
   printw("%d\t%d\t%d\t%d\t %d\n", damage, health,cost,speed,attackRange);
 }
+
+int unit::getCost()
+{
+  return cost;
+}

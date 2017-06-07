@@ -7,6 +7,7 @@ archer::archer(int n)
   attackRange=n;
   speed=n/5;
   cost=30;
+  name="lowca";
 }
 
 

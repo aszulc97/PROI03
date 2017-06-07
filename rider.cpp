@@ -7,4 +7,5 @@ rider::rider(int n)
   attackRange=2;
   speed=n/3;
   cost=40;
+  name="jezdziec";
 }

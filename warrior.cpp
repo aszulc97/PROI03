@@ -7,4 +7,5 @@ warrior::warrior(int n)
   attackRange=1;
   speed=n/10;
   cost=55;
+  name="wojownik";
 }

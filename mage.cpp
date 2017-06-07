@@ -7,4 +7,5 @@ mage::mage(int n)
   attackRange=15;
   speed=n/5;
   cost=30;
+  name="mag";
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
+#include <stdlib.h>
+#include <string>
 #include "player.h"
 #include "archer.h"
 #include "rider.h"
@@ -12,18 +14,14 @@ using namespace std;
 int columns = 0;
 int rows = 0;
 int fieldSize=10;
-//char text[] = "sample";
+char str_fieldSize[80];
+
+
 
 int main()
 {
   player player1;
   player player2;
-  archer archer1(10);
-  rider rider1(10);
-  mage mage1(10);
-  knight knight1(10);
-  warrior warrior1(10);
-
 
   initscr();
 
@@ -36,10 +34,17 @@ int main()
 
   attron(COLOR_PAIR(1));
   mvprintw( (rows/2)-2,( columns/2)-13, "Witajcie w grze!" );
-  getch();
+  mvprintw( (rows/2),( columns/2)-19, "Podaj rozmiar pola walki: " );
+  getstr(str_fieldSize);
+  fieldSize = atoi(str_fieldSize);
   clear();
 
-  //text = "Graczu 1, masz monet"
+  archer archer1(fieldSize);
+  rider rider1(fieldSize);
+  mage mage1(fieldSize);
+  knight knight1(fieldSize);
+  warrior warrior1(fieldSize);
+
   attron(COLOR_PAIR(3));
   mvprintw( 1, 0, "Graczu 1, masz %d monet", player1.getMoney() );
   mvprintw( 2, 0, "Jakie jednostki chcesz za to kupic?\n");
@@ -147,6 +152,82 @@ int main()
   mvprintw( 4,30, "Magowie: %d", player2.mages);
   mvprintw( 5,30, "Rycerze: %d", player2.knights);
   mvprintw( 6,30, "Wojownicy: %d", player2.warriors);
+
+  attron(COLOR_PAIR(1));
+  mvprintw( (rows/2)-2, 13, "Zaczynamy gre!" );
+  getch();
+/*  attron(COLOR_PAIR(3));
+  mvprintw( 1,50, "\t\tAtak\tZdrowie\tPredkosc Zasieg");
+  mvprintw( 2,50, "Lowca: %d", player2.archers);
+  mvprintw( 3,50, "Jezdziec: %d", player2.riders);
+  mvprintw( 4,50, "Mag: %d", player2.mages);
+  mvprintw( 5,50, "Rycerz: %d", player2.knights);
+  mvprintw( 6,50, "Wojownik: %d", player2.warriors); */
+
+  char choice;
+  char action;
+
+  attron(COLOR_PAIR(3));
+  do
+  {
+  //choice='0';
+    clear();
+    printw("\nGraczu 1, ktora jednostke wybierasz?");
+    printw("\n1.Lowca");
+    printw("\n2.Jezdziec");
+    printw("\n3.Mag");
+    printw("\n4.Rycerz");
+    printw("\n5.Wojownik");
+    printw("\n6.Szczegoly nt. jednostek");
+    printw("\nWcisnij q aby zakonczyc");
+    printw("\nTwoj wybor: ");
+    choice=getch();
+
+    if (choice=='q') continue;
+    else if (choice!='6')
+    {
+      printw("\n\nWybrales: ");
+      switch(choice)
+      {
+        case '1': {printw(archer1.name.c_str());}break;
+        case '2': {printw(rider1.name.c_str());}break;
+        case '3': {printw(mage1.name.c_str());}break;
+        case '4': {printw(knight1.name.c_str());}break;
+        case '5': {printw(warrior1.name.c_str());}break;
+      }
+      printw("\nCo chcesz zrobic?");
+      printw("\na.Atakowac");
+      printw("\nb.Podejsc blizej");
+      action=getch();
+      if (action='a')
+      {
+
+      }
+      else if (action='b')
+      {
+
+      }
+      else
+
+    }
+    else if (choice=='6')
+    {
+      printw("\n\t\tAtak\tZdrowie Koszt\tPredkosc Zasieg\n");
+      printw("Lowca\t\t");
+      archer1.showDetails();
+      printw("Jezdziec\t");
+      rider1.showDetails();
+      printw("Mag\t\t");
+      mage1.showDetails();
+      printw("Rycerz\t\t");
+      knight1.showDetails();
+      printw("Wojownik\t");
+      warrior1.showDetails();
+      getch();
+//      continue;
+    }
+
+  } while (choice!='q');
   getch();
 
   endwin();

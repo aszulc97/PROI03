@@ -7,4 +7,5 @@ knight::knight(int n)
   attackRange=1;
   speed=n/2;
   cost=20;
+  name="rycerz";
 }

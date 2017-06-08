@@ -6,8 +6,8 @@ using namespace std;
 class unit
 {
   public:
-    void walk();
-    void attack();
+    int walk();
+    virtual int attack() =0;
     void gettingDamaged();
     void showDetails();
     int getHealth();
@@ -15,6 +15,7 @@ class unit
     int getCost();
     void battleTable(int y);
     string name;
+    string attackName;
     int position;
 
   protected:

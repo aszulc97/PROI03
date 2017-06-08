@@ -7,14 +7,14 @@ class player
   public:
     player();
     int getMoney();
-    void showUnits();
     int archers;
     int mages;
     int knights;
     int riders;
     int warriors;
-    int shopping;
     void showArmy();
+    int shopping;
+    int teamHealth(int unit, int unitHealth);
 
 
   private:

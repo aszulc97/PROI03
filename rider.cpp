@@ -9,3 +9,9 @@ rider::rider(int n)
   cost=40;
   name="jezdziec";
 }
+
+int rider::attack()
+{
+  attackName="szarza";
+  return damage;
+}

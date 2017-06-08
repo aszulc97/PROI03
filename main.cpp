@@ -2,6 +2,7 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <string>
+#include <fstream>
 #include "player.h"
 #include "archer.h"
 #include "rider.h"
@@ -34,9 +35,21 @@ int main()
 
   attron(COLOR_PAIR(1));
   mvprintw( (rows/2)-2,( columns/2)-13, "Witajcie w grze!" );
-  mvprintw( (rows/2),( columns/2)-19, "Podaj rozmiar pola walki: " );
-  getstr(str_fieldSize);
+  mvprintw( (rows/2),( columns/2)-17, "Rozmiar pola walki: " );
+
+  fstream file;
+  file.open( "plik.txt", std::ios::in);
+  if (!file.is_open())
+  {
+    printw("Plik uszkodzony!\n");
+    getch();
+    return 1;
+  }
+
+  file>>str_fieldSize;
   fieldSize = atoi(str_fieldSize);
+  printw("%d", fieldSize);
+  getch();
   clear();
 
   archer archer1(fieldSize);
@@ -201,13 +214,13 @@ int main()
       action=getch();
       if (action='a')
       {
-
+        //if
       }
       else if (action='b')
       {
 
       }
-      else
+      //else
 
     }
     else if (choice=='6')

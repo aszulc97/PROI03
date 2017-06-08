@@ -9,3 +9,9 @@ mage::mage(int n)
   cost=30;
   name="mag";
 }
+
+int mage::attack()
+{
+  attackName="czar";
+  return damage;
+}

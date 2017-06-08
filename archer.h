@@ -6,5 +6,6 @@ class archer: public unit
 {
   public:
     archer(int n);
+    int attack();
 };
 #endif //ARCHER_H_

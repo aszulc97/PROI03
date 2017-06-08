@@ -6,5 +6,6 @@ class rider: public unit
 {
 public:
   rider(int n);
+  int attack();
 };
 #endif //RIDER_H_

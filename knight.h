@@ -6,5 +6,6 @@ class knight: public unit
 {
 public:
   knight(int n);
+  int attack();
 };
 #endif //KNIGHT_H_

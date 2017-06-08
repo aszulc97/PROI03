@@ -10,4 +10,9 @@ archer::archer(int n)
   name="lowca";
 }
 
+int archer::attack()
+{
+  attackName="strzal";
+  return damage;
+}
 

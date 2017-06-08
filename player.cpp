@@ -20,3 +20,8 @@ void player::showArmy()
   printw("Rycerze: %d\n", knights);
   printw("Wojownicy: %d\n", warriors);
 }
+
+int player::teamHealth(int unit, int unitHealth)
+{
+  return unit*unitHealth;
+}

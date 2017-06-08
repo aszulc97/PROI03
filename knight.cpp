@@ -9,3 +9,9 @@ knight::knight(int n)
   cost=20;
   name="rycerz";
 }
+
+int knight::attack()
+{
+  attackName="dzgniecie";
+  return damage;
+}

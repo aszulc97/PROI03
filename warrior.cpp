@@ -9,3 +9,9 @@ warrior::warrior(int n)
   cost=55;
   name="wojownik";
 }
+
+int warrior::attack()
+{
+  attackName="uderzenie";
+  return damage;
+}

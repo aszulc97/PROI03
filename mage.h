@@ -6,5 +6,6 @@ class mage : public unit
 {
 public:
   mage(int n);
+  int attack();
 };
 #endif //MAGE_H_

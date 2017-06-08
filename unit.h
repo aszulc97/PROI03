@@ -7,7 +7,7 @@ class unit
 {
   public:
     int walk();
-    virtual int attack() =0;
+    virtual int attack() =0;  //pure virtual method
     void gettingDamaged();
     void showDetails();
     int getHealth();
@@ -16,7 +16,6 @@ class unit
     void battleTable(int y);
     string name;
     string attackName;
-    int position;
 
   protected:
     int health;

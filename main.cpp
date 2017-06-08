@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
+#include <vector>
+
 #include "player.h"
 #include "archer.h"
 #include "rider.h"
@@ -12,15 +14,14 @@
 
 using namespace std;
 
-int columns = 0;
-int rows = 0;
-int fieldSize=10;
-char str_fieldSize[80];
-
-
-
 int main()
 {
+  int columns = 0;
+  int rows = 0;
+
+  int fieldSize;
+  char str_fieldSize[80];
+
   player player1;
   player player2;
 
@@ -37,11 +38,11 @@ int main()
   mvprintw( (rows/2)-2,( columns/2)-13, "Witajcie w grze!" );
   mvprintw( (rows/2),( columns/2)-17, "Rozmiar pola walki: " );
 
-  fstream file;
+  fstream file;  //getting size of battlefield
   file.open( "plik.txt", std::ios::in);
   if (!file.is_open())
   {
-    printw("Plik uszkodzony!\n");
+    printw("Plik uszkodzony!\n");  //no file error
     getch();
     return 1;
   }
@@ -52,11 +53,14 @@ int main()
   getch();
   clear();
 
+
   archer archer1(fieldSize);
   rider rider1(fieldSize);
   mage mage1(fieldSize);
   knight knight1(fieldSize);
   warrior warrior1(fieldSize);
+
+  //BUYING UNITS - PLAYER I
 
   attron(COLOR_PAIR(3));
   mvprintw( 1, 0, "Graczu 1, masz %d monet", player1.getMoney() );
@@ -122,34 +126,60 @@ int main()
   printw("Wojownik\t");
   warrior1.showDetails();
 
-  printw("\nIlu lowcow kupujesz?: ");
-  player2.archers=getch()-48; //here's a character
+  while(true)
+  {
+  printw("\nIlu lowcow kupujesz?(max. 9): ");
+  player2.archers=getch()-48;
   player2.shopping=player2.getMoney()-(player2.archers)*archer1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
-  printw("\nIlu jezdzcow kupujesz?: ");
-  player2.riders=getch()-48; //here's a character
+  printw("\nIlu jezdzcow kupujesz?(max. 9): ");
+  player2.riders=getch()-48;
   player2.shopping-=(player2.riders)*rider1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
-  printw("\nIlu magow kupujesz?: ");
-  player2.mages=getch()-48; //here's a character
+  if (player2.shopping<1)
+  {
+    printw("\nKoniec zakupow!");
+    getch();
+    break;
+  }
+
+  printw("\nIlu magow kupujesz?(max. 9): ");
+  player2.mages=getch()-48;
   player2.shopping-=(player2.mages)*mage1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
-  printw("\nIlu rycerzy kupujesz?: ");
-  player2.knights=getch()-48; //here's a character
+  if (player2.shopping<1)
+  {
+    printw("\nKoniec zakupow!");
+    getch();
+    break;
+  }
+
+  printw("\nIlu rycerzy kupujesz?(max. 9): ");
+  player2.knights=getch()-48;
   player2.shopping-=(player2.knights)*knight1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
 
-  printw("\nIlu wojownikow kupujesz?: ");
-  player2.warriors=getch()-48; //here's a character
+  if (player2.shopping<1)
+  {
+    printw("\nKoniec zakupow!");
+    getch();
+    break;
+  }
+
+  printw("\nIlu wojownikow kupujesz?(max. 9): ");
+  player2.warriors=getch()-48;
   player2.shopping-=(player2.warriors)*warrior1.getCost();
   printw("\nZostalo Ci %d monet",player2.shopping);
-
+  break;
+  }
   player2.showArmy();
   getch();
   clear();
+
+  //UNITS SUMMARY
 
   attron(COLOR_PAIR(1));
   mvprintw( 1,1, " Gracz 1:" );
@@ -169,13 +199,17 @@ int main()
   attron(COLOR_PAIR(1));
   mvprintw( (rows/2)-2, 13, "Zaczynamy gre!" );
   getch();
-/*  attron(COLOR_PAIR(3));
-  mvprintw( 1,50, "\t\tAtak\tZdrowie\tPredkosc Zasieg");
-  mvprintw( 2,50, "Lowca: %d", player2.archers);
-  mvprintw( 3,50, "Jezdziec: %d", player2.riders);
-  mvprintw( 4,50, "Mag: %d", player2.mages);
-  mvprintw( 5,50, "Rycerz: %d", player2.knights);
-  mvprintw( 6,50, "Wojownik: %d", player2.warriors); */
+/*
+  vector <int> player1Army;
+  vector <int> player2Army;
+  for(int i = 0; i < fieldSize; i++ ) player1Army.at(i)=0;
+  for(int i = 0; i < fieldSize; i++ ) player2Army.at(i)=0;
+
+  player1.archersPosition=player1.knightsPosition=player1.ridersPosition=player1.magesPosition=player1.warriorsPosition=0;
+  player1Army.at(0)=5;
+
+  player2.archersPosition=player2.knightsPosition=player2.ridersPosition=player2.magesPosition=player2.warriorsPosition=fieldSize;
+  player2Army.at(fieldSize)=5;*/
 
   char choice;
   char action;
@@ -183,8 +217,10 @@ int main()
   attron(COLOR_PAIR(3));
   do
   {
-  //choice='0';
     clear();
+
+    //GAME
+
     printw("\nGraczu 1, ktora jednostke wybierasz?");
     printw("\n1.Lowca");
     printw("\n2.Jezdziec");
@@ -212,11 +248,11 @@ int main()
       printw("\na.Atakowac");
       printw("\nb.Podejsc blizej");
       action=getch();
-      if (action='a')
+      if (action=='a')
       {
         //if
       }
-      else if (action='b')
+      else if (action=='b')
       {
 
       }

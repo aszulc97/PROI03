@@ -4,6 +4,7 @@
 player::player()
 {
   money = 300;
+  archers = knights = riders = warriors = mages =0;
 }
 
 int player::getMoney()
@@ -25,3 +26,6 @@ int player::teamHealth(int unit, int unitHealth)
 {
   return unit*unitHealth;
 }
+
+
+
